@@ -11,7 +11,7 @@ $(document).ready(function(){
     })  
 });
 });
-function redirect(res, msg){
+function redirect(res){
     if(res == true){
         alert("you have logout successfully!")
         window.location = "index.html";
