@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>SOABank</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <link rel="icon" href="./assets/img/sons-of-anarchy.png" type="image/gif" sizes="16x16">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="fragmnent/indexheader.txt"></script>
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+    <header id='header' class='fixed-top'>
+        <div class='container d-flex'>
+            <div class='logo mr-auto'>
+                <h1 class='text-light'><a href='index.html'><span>SOA</span>Bank</a></h1>
+            </div>
+            <nav class='nav-menu d-none d-lg-block'>
+                <ul>
+                    <li><a href='#contactUs'>Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="home" class="slider-area">
+        <div class="bend niceties preview-2">
+            <div id="ensign-nivoslider" class="slides">
+                <img src="assets/img/slider/slider1.jpg" alt="" title="#slider-direction-1" />
+                <img src="assets/img/slider/slider2.jpg" alt="" title="#slider-direction-2" />
+                <img src="assets/img/slider/slider3.jpg" alt="" title="#slider-direction-3" />
+            </div>
+            <div id="slider-direction-1" class="slider-direction slider-one">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="slider-content">
+                                <!-- layer 1 -->
+                                <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <h2 class="title1">You made the right choice with us </h2>
+                                </div>
+                                <!-- layer 2 -->
+                                <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                    <h1 class="title2">Let us be part of your journey</h1>
+                                </div>
+                                <!-- layer 3 -->
+                                <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                    <button type="button" class="ready-btn right-btn" data-toggle="modal" data-target="#exampleModalSignUp">
+                                        Signup
+                                    </button>
+                                    <button type="button" style="background-color: transparent;" class="ready-btn page-scroll" data-toggle="modal" data-target="#exampleModalSignin">
+                                        Signin
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalSignUp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content pb-4">
+
+                        <div id="signup" class="signups-area ">
+                            <button type="button" class="close m-2" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="section-headline signups-head text-center">
+                                            <h2 class="m-5">signup</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-sm-1">
+                                    </div>
+
+                                    <div class="col-10">
+                                        <div class="form">
+                                            <form id="forms" method="post" name="form-signup" class="php-email-form">
+                                                <div class="form-group">
+                                                    <input type="text" name="createAccountNumber" class="form-control" id="createAccountNumber" placeholder="Your Account Number" pattern=".{5,}" required />
+                                                    <div class="validate"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="createUsername" class="form-control" id="createUsername" placeholder="Your Username" required />
+                                                    <div class="validate"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" name="createPassword" id="createPassword" placeholder="New Password" required />
+                                                    <div class="validate"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" title="Must match the newly created password" placeholder="Confirm Password" required />
+                                                    <p style="color: red;"></p>
+                                                    <div class="validate"></div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <!-- Error and success messages go here -->
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="text-left col-sm-6"><button type="submit">Sign
+                                                            Up</button></div>
+                                                    <div class="text-right col-sm-6" style="float: left;"><button class="btn-secondary specialButton" data-dismiss="modal">Cancel</button></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalSignin" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div id="signinbutton" class="signups-area">
+                            <button type="button" class="close m-2" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="section-headline signups-head text-center">
+                                            <h2 class="m-5">signin</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-sm-1">
+                                    </div>
+
+                                    <div class="col-10">
+                                        <div class="form">
+                                            <form id="form-signin" method="post" name="form-signup" class="php-email-form">
+                                                <div class="form-group">
+                                                    <input type="text" name="createUsername" class="form-control" id="enterUsername" placeholder="Your Username" required />
+                                                    <div class="validate"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" name="createPassword" id="enterPassword" placeholder="Enter Password" required />
+                                                    <div class="validate"></div>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <!-- Error and success messages go here -->
+                                                </div>
+                                                <div class="row mb-5">
+                                                    <div class="text-left col-sm-6"><button type="submit">Sign in</button></div>
+                                                    <div class="text-right col-sm-6" style="float: left;"><button class="btn-secondary specialButton" data-dismiss="modal">Cancel</button></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-1">
+                                    </div>
+
+                                </div>
+                                <!-- End Left contact -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="slider-direction-2" class="slider-direction slider-two">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="slider-content text-center">
+                            <!-- layer 1 -->
+                            <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                <h2 class="title1">Checking and Savings </h2>
+                            </div>
+                            <!-- layer 2 -->
+                            <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                <h1 class="title2">Knowledgeable lending specialists, from application through closing.
+                                </h1>
+                            </div>
+                            <!-- layer 3 -->
+                            <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                <button type="button" class="ready-btn right-btn" data-toggle="modal" data-target="#exampleModalSignUp">
+                                    Signup      
+                                </button>
+                                <button type="button" style="background-color: transparent;" class="ready-btn page-scroll" data-toggle="modal" data-target="#exampleModalSignin">
+                                    Signin
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slider-direction-3" class="slider-direction slider-two">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="slider-content">
+                            <!-- layer 1 -->
+                            <div class="layer-1-1 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                <h2 class="title1">
+                                    Auto Loans
+                                </h2>
+                            </div>
+                            <!-- layer 2 -->
+                            <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                                <h1 class="title2">
+                                    Our 30-Day Rate Lock Guarantee gives you time to make the right decision
+                                </h1>
+                            </div>
+                            <!-- layer 3 -->
+                            <div class="layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                                <button type="button" style="background-color: transparent;" class="ready-btn page-scroll" data-toggle="modal" data-target="#exampleModalSignin">
+                                    Signin
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="includedContentFooter"></div>
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $("#includedContentFooter").load("./fragmnent/footer.html");
+        });
+    </script>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/appear/jquery.appear.js"></script>
+    <script src="assets/vendor/knob/jquery.knob.js"></script>
+    <script src="assets/vendor/parallax/parallax.js"></script>
+    <script src="assets/vendor/wow/wow.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/nivo-slider/js/jquery.nivo.slider.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="./userscript.js"></script>
+    <script src="./createuser.js"></script>
+</body>
+
+</html>

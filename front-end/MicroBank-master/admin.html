@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/adminStyle.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!--JavaScript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/js/adminTransaction.js"></script>
+</head>
+</div>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-3 sidenav">
+                <div data-spy="affix">
+                    <h3 id="logo">MicroBank</h3>
+
+                    <h6>Admin Dashboard</h6>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active" ><a id="createAccountMenu"  onclick="createAccountMenu()">Create Account</a></li>
+                        <li><a  id="createAccountMenu" onclick="depositeMenu()">Deposit Money</a></li>
+                        <li ><a id="listTransactionMenu" onclick="listTransactionMenu()">List of Transactions</a></li>
+                    </ul><br>
+                </div>
+            </div>
+            <!-- Start Create Account-->
+
+            <div class="col-sm-9">
+                <div id="top-header"></div>
+                <hr>
+                <div id="sec1" class="show">
+                <h2 id="createAccount">Create New Account</h2>
+                <div class="form contact-form">
+                    <form id="create" action="" method="post" role="form" name="form-signin">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="newAccountNumber" id="accno"
+                                placeholder="Account Number" data-rule="minlen:10"
+                                data-msg="Please enter a valid account number" />
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group">
+                            <select id = "acctype" name="accountType" class="form-control">
+                                <option disabled value="" selected>Select account type</option>
+                                <option>Checking</option>
+                                <option>Saving</option>
+                                <option>Loan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="initialBalance" id="balance"
+                                placeholder="Initial Balance" data-rule="minlen:1">
+                            <div class="validate"></div>
+                        </div>
+                        <button type="submit" class="btn">Create new Account</button>
+                    </form>
+                </div>
+                    <!-- End Create Account-->
+                </div>
+                <!--Start Make Deposite-->
+                <div id="sec2" class="hidden">
+                <h2 id="depositeMoney">Deposite Money</h2>
+                <div class="form contact-form">
+                    <form id = "deposit" action="" method="post" role="form" name="form-signin">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="accountNumber" id="acc"
+                                placeholder="Account Number" data-rule="minlen:10"
+                                data-msg="Please enter a valid account number" />
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="depositeAmmount" id="amount"
+                                placeholder="Deposit Ammount" data-rule="minlen:1" >
+                            <div class="validate"></div>
+                        </div>
+                        <button type="submit" class="btn">Deposite</button>
+                    </form>
+                </div>
+            </div>
+                <!-- End Make Deposite-->
+                <!--Start List of transactions-->
+                <div id="sec3" class="hidden">
+                <h2 id="depositeMoney">Transactions </h2>
+                <hr>
+
+                <br>
+                <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2" id="searchByAccount"
+                    id="search">
+                    <input class="form-control form-control-sm mr-3 w-75 btn" type="text"
+                        placeholder="Enter Account number" id="inputNumber">
+                    <button type="submit" class="btn">Search by Account Number</button>
+                </form>
+                <hr>
+                <table id="all-transaction-table" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Account Number</th>
+                            <th>Transaction Id</th>
+                            <th>Transaction Date</th>
+                            <th>Transaction Amount $</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionBody">
+
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <!-- End List of Transactions-->
+            <!-- <br><br> -->
+            <!-- <br><br> -->
+        </div>
+    </div>
+    </div>
+
+    <!-- <footer class="container-fluid">
+        <p>Footer Text</p>
+    </footer> -->
+    <script src="/assets/js/admin.js"></script>
+    <script src="./create.js"></script>
+
+</body>
+
+</html>
