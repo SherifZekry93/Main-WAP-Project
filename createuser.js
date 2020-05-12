@@ -37,6 +37,7 @@ $(document).ready(function() {
     function redirect(success) {
         if (success == true) {
             window.location = "userHome.html";
+            window.location = "userHome.html?username="+document.getElementById("createUsername").value;
         } else {
             alert("error");
         }
