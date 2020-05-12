@@ -23,12 +23,12 @@ $(document).ready(function () {
       }
       )
   });
-  function redirect(inputData) {
-    if (inputData == true) {
+  function redirect(success, msg) {
+    if (success == true) {
       window.location = "userHome.html";
     }
     else {
-      alert("invalid username or password");
+      alert(msg);
     }
   }
 });
