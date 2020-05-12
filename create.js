@@ -1,3 +1,6 @@
+
+let appUrl = "http://localhost:8080/MicroBank/";
+
 $(function() {
     console.log("have you ever come to this");
     $("#create").on('submit', payhandler);
@@ -16,7 +19,7 @@ function deposit(evt) {
             "amount": amount
     }
 
-     fetch("http://localhost:8080/EBanking/accounts/depost", {
+     fetch(appUrl+"accounts/deposit", {
 
         method: "POST",
         body: JSON.stringify(obj),
@@ -52,7 +55,7 @@ function payhandler(evt) {
     
 
 
-    fetch("http://localhost:8080/EBanking/accounts/", {
+    fetch(appUrl + "accounts/save", {
 
         method: "POST",
         body: JSON.stringify(obj),
