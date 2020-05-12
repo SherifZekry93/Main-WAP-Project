@@ -1,36 +1,14 @@
 
-let appUrl = "http://localhost:8080/MicroBank/";
+
 
 $(function() {
     console.log("have you ever come to this");
-    $("#create").on('submit', payhandler);
-    $("#deposit").on('submit', deposit);
+    //$("#create").on('submit', payhandler);
+    //$("#deposit").on('submit', deposit);
 })
 
 
-function deposit(evt) {
-    evt.preventDefault();
-      let accno = document.getElementById("acc").value;
-      console.log("halooo" + accno);
-    let amount = document.getElementById("amount").value;
 
-    let obj = {
-            "accno": accno,
-            "amount": amount
-    }
-
-     fetch(appUrl+"accounts/deposit", {
-
-        method: "POST",
-        body: JSON.stringify(obj),
-               headers: {
-         "Content-Type": "application/json"
-        }
-    }).then(function(res) {return res.json();}).then(function(data) {
-        alert(JSON.stringify(data))
-    })
-
-}
 function payhandler(evt) {
     evt.preventDefault();
 

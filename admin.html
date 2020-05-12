@@ -43,13 +43,13 @@
                     <form id="createAccountForm" method="post" role="form" name="form-signin">
                         <div class="form-group">
                             <input type="text" class="form-control" name="newAccountNumber" id="accno"
-                                placeholder="Account Number"  
+                                placeholder="Account Number" required 
                            
                                 data-msg="Please enter a valid account number" />
                             <div class="validate"></div>
                         </div>
                         <div class="form-group">
-                            <select id = "acctype" name="accountType" class="form-control" >
+                            <select id = "acctype" name="accountType" class="form-control" required>
                                 <option disabled value="" selected>Select account type</option>
                                 <option>Checking</option>
                                 <option>Saving</option>

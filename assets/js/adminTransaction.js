@@ -13,6 +13,7 @@ $(document).ready(function () {
            addNewAccount(); 
         }
     );
+    $("#deposit").on('submit', deposit);
 }) ;
 
 function display(data) {
@@ -60,17 +61,41 @@ function addNewAccount() {
         }
     }
 
-    $.post(appUrl + "accounts/save", account)
-    .done(alert("Account saved successfully." + data))
-    .fail(errorFunction)
-    .always(function(){
-        console.log("accounts save called.");
+    fetch(appUrl + "accounts/save", {
+
+        method: "POST",
+        body: JSON.stringify(account),
+        headers: {"Content-Type": "application/json"}
+    })
+    .then(function(res) {return res.json();})
+    .then(function(data) {
+        alert(JSON.stringify(data))
     });
+
 }
 
-function saveSuccessed(data)
-{
-    alert("Account saved successfully." + data);
+function deposit(evt) {
+    evt.preventDefault();
+      let accountNumber = document.getElementById("acc").value;
+      console.log("halooo" + accountNumber);
+    let amount = document.getElementById("amount").value;
+
+    let obj = {
+            "accountNumber": accountNumber,
+            "amount": amount
+    }
+
+     fetch(appUrl+"transaction/deposit", {
+
+        method: "POST",
+        body: JSON.stringify(obj),
+               headers: {
+         "Content-Type": "application/json"
+        }
+    }).then(function(res) {return res.json();}).then(function(data) {
+        alert(JSON.stringify(data))
+    })
+
 }
 
 
