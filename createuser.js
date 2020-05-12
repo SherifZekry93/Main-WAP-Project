@@ -11,7 +11,7 @@ $(document).ready(function() {
                 accountNumber: account,
                 password: password
             }
-            fetch("http://localhost:8080/EBanking/user/", {
+            fetch("http://localhost:8080/MicroBank/user/", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
