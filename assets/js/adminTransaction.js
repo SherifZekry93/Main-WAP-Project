@@ -8,7 +8,7 @@ $(document).ready(function () {
     //     .always(function () {
     //     });
     $("#searchByAccount").on("submit", searchByAccount);
-    $("#createAccountForm").submit(function(event) {
+    $("#create").submit(function(event) {
             event.preventDefault();
            addNewAccount(); 
         }
