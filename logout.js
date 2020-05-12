@@ -7,7 +7,16 @@ $(document).ready(function(){
     "Content-Type": "application/json"
 }
     }).then(res => res.json()).then(function(res) {
-        // window.location = "index.html";
-    } )  
+        redirect(res);
+    })  
 });
 });
+function redirect(res){
+    if(res == true){
+        alert("you have logout successfully!")
+        window.location = "index.html";
+    }
+    else{
+        alert("something wrong please try again!")
+    }
+}
