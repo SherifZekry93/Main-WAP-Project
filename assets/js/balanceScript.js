@@ -1,12 +1,12 @@
-
+let apiUrl = "http://localhost:8080/MicroBank/"; 
 $(document).ready(function(){
 
-    $.get("http://localhost:8080/EBanking/transaction/123456/")
+    $.get(apiUrl + "transaction/123456/")
     .done(display)
     .fail(errorFunction)
     .always(function(){
     });
-    $.get("http://localhost:8080/EBanking/accounts/12345/")
+    $.get(apiUrl + "accounts/12345/")
     .done(displayBalance)
     .fail(errorFunction)
     .always(function(){
@@ -15,14 +15,15 @@ $(document).ready(function(){
 
 });
 
-function display(data){
-// console.log(JSON.stringify(myJson));
+function display(res){
+
 let transactionList="<tr>";
-for(let temp of data){
+for(let temp of res.data){
    let date=+temp.date.year+"-"+temp.date.month+"-"+temp.date.day;
    
-transactionList+="<td>" + temp.transactionId+ "</td>" + "<td>" + date + "</td>"+ "<td>" + temp.transactionAmount+ "</td>"+  "</tr>";
+transactionList+="<td>" + temp.description+ "</td>" + "<td>" + date + "</td>"+ "<td>" + temp.transactionAmount+ "</td>"+  "</tr>";
 }
+
 $("#tranasactionBody").html(transactionList);
 }
 function errorFunction(){
