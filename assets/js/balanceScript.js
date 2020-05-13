@@ -2,36 +2,6 @@ let apiUrl = "http://localhost:8080/MicroBank/";
 
 $(document).ready(function(){
 
-    let accountNo = sessionStorage.getItem("accountNo");
-
-
-    $.ajax({
-        url: apiUrl + "accounts/"+accountNo,  
-        success:function(data) {
-            displayBalance(data); 
-        }
-      });
-
-    // $.get(apiUrl + "accounts/"+accountNo)
-    // .complete(displayBalance)
-    // .fail(function(){
-    //     console.log("error in get account balance")
-    //     })
-    // .always(function(){
-    //     console.log("get balance is finished.");
-
-    // });
-
-//     fetch(apiUrl + "accounts/"+accountNo,
-//     {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json"
-//         }
-//     })
-//   .then(response => {displayBalance(response)})
-//   .then(data => console.log(data));
-
     $("#search").on("submit",doSearch);
 
 });
@@ -39,13 +9,15 @@ $(document).ready(function(){
 function displaySearch(res){
 
     let transactionList = "<tr>";
+    let balance = 0;
     for (let temp of res.data) {
         let date = +temp.date.year + "-" + temp.date.month + "-" + temp.date.day;
-
         transactionList += "<td>" + temp.accountNumber + "<td>" + temp.description + "</td>" + "<td>" + date + "</td>" + "<td>" + temp.transactionAmount + "</td>" + "</tr>";
+        balance += temp.transactionAmount;
     }
 
     $("#tranasactionBody").html(transactionList);
+    $("#balance-ammount").html(balance);
 }
 
 function doSearch(){
@@ -66,6 +38,7 @@ function doSearch(){
         console.log("search is finished.");
 
     });
+
 }
 
 function errorFunction(){
