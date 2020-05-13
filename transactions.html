@@ -5,24 +5,51 @@
     <title>Account Transaction</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/oldcss/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/assets/css/adminStyle.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <!--JavaScript-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+    <style>
+        .nav-menu .drop-down>a:after
+        {
+            content: "";
+        }
+        .nav-pills li
+        {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 
 <body>
-
+    <header id='header' class='fixed-top'>
+        <div class='container d-flex'>
+          <div class='logo mr-auto' style="width: 20%; float: left;">
+            <h1 class='text-light'><a href='userHome.html'><span>SOA</span>Bank</a></h1>
+          </div>
+          <nav class='nav-menu d-none d-lg-block' style="float: right;">
+            <ul>
+              <li><a href='userHome.html'>Home</a></li>
+              
+              <li class='drop-down'><a style='cursor:pointer;'>Operations</a>
+                <ul>
+                  <li><a href='/balance.html'>Check Balance</a></li>
+                  <li><a href='/transactions.html'>Transactions</a></li>
+                </ul>
+              </li>
+              <li><a href='contact.html'>Contact Us</a></li>
+              <li id='logout'><a href='./index.html'>Logout</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
     <div class="container-fluid">
         <div class="row content">
             <div class="col-sm-3 sidenav">
                 <div data-spy="affix">
-                    <h3 id="logo">Micro Bank</h3>                    
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active"><a id="createAccountMenu" onclick="createAccountMenu()">Create Account</a></li>
                         <li><a id="depositeMenu" onclick="depositeMenu()">Deposit Money</a></li>
@@ -36,7 +63,7 @@
 
             <div class="col-sm-9">
                 <div id="top-header"></div>
-                <hr>
+                <hr> 
                 <div id="sec1" class="show">
                     <h2 id="createAccount">Create New Account</h2>
                     <div class="form contact-form">
@@ -58,7 +85,10 @@
                                 <input type="number" class="form-control" name="initialBalance" id="balance" value="0.0" placeholder="Initial Balance">
                                 <div class="validate"></div>
                             </div>
-                            <button type="submit" class="btn" id="createNewAccount">Create new Account</button>
+                            <button type="submit" class="btn btn-secondary" id="createNewAccount">Create new Account</button>
+                            <div class="form-group">
+                                <p id="saveAccountMessage" class="text-success font-weight-bold"></p>
+                            </div>
                         </form>
                     </div>
                     <!-- End Create Account-->
@@ -76,12 +106,15 @@
                                 <input type="number" class="form-control" name="depositeAmmount" id="amount" placeholder="Deposit Ammount" data-rule="minlen:1">
                                 <div class="validate"></div>
                             </div>
-                            <button type="submit" class="btn">Deposite</button>
+                            <button type="submit" class="btn btn-secondary">Deposite</button>
+                            <div class="form-group">
+                                <p id="depositeMessage" class="text-success font-weight-bold"></p>
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div id="sec4" class="hidden">
-                    <h2 id="withdraweMoney">Withdraw Money</h2>
+                    <h2 id="withdrawMoney">Withdraw Money</h2>
                     <div class="form contact-form">
                         <form id="withdraw" action="" method="post" role="form" name="form-signin">
                             <div class="form-group">
@@ -92,7 +125,10 @@
                                 <input type="number" class="form-control" name="withdrawAmmount" id="withdrawAmount" placeholder="withdraw Ammount" data-rule="minlen:1">
                                 <div class="validate"></div>
                             </div>
-                            <button type="submit" class="btn">Withdraw</button>
+                            <button type="submit" class="btn btn-secondary">Withdraw</button>
+                            <div class="form-group">
+                                <p id="withdrawMessage" class="text-success font-weight-bold"></p>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -104,7 +140,7 @@
                     <br>
                     <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2" id="searchByAccount" id="search">
                         <input class="form-control form-control-sm mr-3 w-75 btn" type="text" placeholder="Enter Account number" id="inputNumber">
-                        <button type="submit" class="btn">Search by Account Number</button>
+                        <button type="submit" class="btn btn-secondary">Search by Account Number</button>
                     </form>
                     <hr>
                     <table id="all-transaction-table" class="table table-hover">
@@ -127,7 +163,13 @@
     </div>
 
     <script src="assets/js/transaction.js"></script>
+    <script>
+        $('.nav-pills').on('click', 'li', function() {
+    $('.nav-pills li.active').removeClass('active');
+    $(this).addClass('active');
+});
 
+    </script>
 
 </body>
 

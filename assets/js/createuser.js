@@ -3,17 +3,17 @@ $(document).ready(function() {
         event.preventDefault();
         const uername = $('#createUsername').val();
         const password = $('#createPassword').val();
-        const account = $('#createAccountNumber').val();
+        //const account = $('#createAccountNumber').val();
         const confirm = $('#confirmPassword').val();
         console.log(uername);
         console.log(password);
-        console.log(account);
+        //console.log(account);
         console.log(confirm);
         
         if (password === confirm) {
             const data = {
                 userName: uername,
-                accountNumber: account,
+                accountNumber: null,
                 password: password
             }
             fetch("http://localhost:8080/MicroBank/user/signUp", {
@@ -22,8 +22,11 @@ $(document).ready(function() {
                 headers: {
                     "Content-Type": "application/json"
                 }
-            }).then(function(res) { return res.json(); }).then(res => redirect(res)).catch(err =>{
+            })
+            .then(function(res) { return res.json(); })
+            .then(res => redirect(res)).catch(err =>{
                 console.log("here is the error"+err)
+                
             });
 
 
@@ -36,8 +39,9 @@ $(document).ready(function() {
 
     function redirect(success) {
         if (success == true) {
-            window.location = "userHome.html";
-            window.location = "userHome.html?username="+document.getElementById("createUsername").value;
+            sessionStorage.setItem("accountNo", "");      
+            $('#btnSignupCancle').click();
+            alert("signup successfully!")
         } else {
             alert("error");
         }

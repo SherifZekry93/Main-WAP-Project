@@ -15,6 +15,9 @@ $(document).ready(function () {
         "Content-Type": "application/json"
       }
     }
+    
+    
+
     console.log("REquest", request);
 
     fetch("http://localhost:8080/MicroBank/user/login/", request).then(response => response.json())
@@ -23,8 +26,11 @@ $(document).ready(function () {
       }
       )
   });
-  function redirect(success) {
-    if (success == true) {
+  function redirect(res) {
+    if (res.status == "Success") {
+      sessionStorage.setItem("accountNo", res.data);
+      sessionStorage.setItem("userName", document.getElementById("enterUsername").value);
+      sessionStorage.setItem("password", document.getElementById("enterPassword").value);      
       window.location = "userHome.html?username="+document.getElementById("enterUsername").value;
     }
     else {

@@ -44,11 +44,12 @@ function createAccountMenu() {
 
 $(document).ready(function () {
 
-    // $.get(appUrl + "transaction/")
-    //     .done(display)
-    //     .fail(errorFunction)
-    //     .always(function () {
-    //     });
+    
+    document.getElementById("accno").value = sessionStorage.getItem("accountNo");
+    document.getElementById("acc").value = sessionStorage.getItem("accountNo");
+    document.getElementById("accountNo").value = sessionStorage.getItem("accountNo");
+    document.getElementById("inputNumber").value = sessionStorage.getItem("accountNo");
+
     $("#searchByAccount").on("submit", searchByAccount);
     $("#createAccountForm").submit(function(event) {
             event.preventDefault();
@@ -60,7 +61,7 @@ $(document).ready(function () {
 }) ;
 
 function display(res) {
-    // console.log(JSON.stringify(myJson));
+
     let transactionList = "<tr>";
     for (let temp of res.data) {
         let date = +temp.date.year + "-" + temp.date.month + "-" + temp.date.day;
@@ -78,21 +79,14 @@ function searchByAccount() {
 
     event.preventDefault();
     let accountNumber= $("#inputNumber").val();
-     $.get(appUrl + "transaction/"+accountNumber)
+     
+    $.get(appUrl + "transaction/"+accountNumber)
     .done(display)
     .fail(errorFunction)
     .always(function(){
         console.log("So, this happened.");
 
     });
-
-
-    fetch(appUrl + "transaction/"+accountNumber, 
-    {
-        method: "GET",
-        headers: {"Content-Type": "application/json"}
-    })
-    .then(display(res));
 
 }
 
@@ -101,17 +95,27 @@ function addNewAccount() {
     const accno= $("#accno").val();
     const acctype= $("#acctype").val();
     const balance= $("#balance").val();
+    const userName = sessionStorage.getItem("userName");
+    const password = sessionStorage.getItem("password");
+
     let account = {
         type: acctype,
         accountNumber: accno,
         balance: balance,
         accountEntries: [],
         customer: {
-            userName: "ahmad",
+            userName: userName,
             accountNumber: accno,
-            password: "123"
+            password: password
         }
     }
+    if(accno){
+        sessionStorage.setItem("accountNo", accno);
+    }
+    
+    document.getElementById("acc").value = sessionStorage.getItem("accountNo");
+    document.getElementById("accountNo").value = sessionStorage.getItem("accountNo");
+    document.getElementById("inputNumber").value = sessionStorage.getItem("accountNo");
 
     fetch(appUrl + "accounts/save", {
 
@@ -121,7 +125,7 @@ function addNewAccount() {
     })
     .then(function(res) {return res.json();})
     .then(function(data) {
-        alert(JSON.stringify(data))
+        $("#saveAccountMessage").html("Account No: " + accno + " Saved Successfully.");
     });
 
 }
@@ -144,8 +148,10 @@ function deposit(evt) {
                headers: {
          "Content-Type": "application/json"
         }
-    }).then(function(res) {return res.json();}).then(function(data) {
-        alert(JSON.stringify(data))
+    })
+    .then(function(res) {return res.json();})
+    .then(function(data) {
+        $("#depositeMessage").html("Account No: " + accountNumber + " has been deposited with " + amount + " Dollars Successfully.");
     });
 
 }
@@ -167,8 +173,10 @@ function withdraw(evt) {
                headers: {
          "Content-Type": "application/json"
         }
-    }).then(function(res) {return res.json();}).then(function(data) {
-        alert(JSON.stringify(data))
+    })
+    .then(function(res) {return res.json();})
+    .then(function(data) {
+        $("#withdrawMessage").html("Account No: " + accountNumber + " has been withdraw transaction with " + amount + " Dollars Successfully.");
     });
 
 }

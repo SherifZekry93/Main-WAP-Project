@@ -1,67 +1,79 @@
 let apiUrl = "http://localhost:8080/MicroBank/"; 
+
 $(document).ready(function(){
 
-    $.get(apiUrl + "transaction/123456/")
-    .done(display)
-    .fail(errorFunction)
-    .always(function(){
-    });
-    $.get(apiUrl + "accounts/12345/")
-    .done(displayBalance)
-    .fail(errorFunction)
-    .always(function(){
-    });
-    $("#search").on("submit",searchFunction);
+    let accountNo = sessionStorage.getItem("accountNo");
+
+
+    $.ajax({
+        url: apiUrl + "accounts/"+accountNo,  
+        success:function(data) {
+            displayBalance(data); 
+        }
+      });
+
+    // $.get(apiUrl + "accounts/"+accountNo)
+    // .complete(displayBalance)
+    // .fail(function(){
+    //     console.log("error in get account balance")
+    //     })
+    // .always(function(){
+    //     console.log("get balance is finished.");
+
+    // });
+
+//     fetch(apiUrl + "accounts/"+accountNo,
+//     {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json"
+//         }
+//     })
+//   .then(response => {displayBalance(response)})
+//   .then(data => console.log(data));
+
+    $("#search").on("submit",doSearch);
 
 });
 
-function display(res){
+function displaySearch(res){
 
-let transactionList="<tr>";
-for(let temp of res.data){
-   let date=+temp.date.year+"-"+temp.date.month+"-"+temp.date.day;
-   
-transactionList+="<td>" + temp.description+ "</td>" + "<td>" + date + "</td>"+ "<td>" + temp.transactionAmount+ "</td>"+  "</tr>";
+    let transactionList = "<tr>";
+    for (let temp of res.data) {
+        let date = +temp.date.year + "-" + temp.date.month + "-" + temp.date.day;
+
+        transactionList += "<td>" + temp.accountNumber + "<td>" + temp.description + "</td>" + "<td>" + date + "</td>" + "<td>" + temp.transactionAmount + "</td>" + "</tr>";
+    }
+
+    $("#tranasactionBody").html(transactionList);
 }
 
-$("#tranasactionBody").html(transactionList);
-}
-function errorFunction(){
-console.log("hi")
-}
-
-function searchFunction(){
+function doSearch(){
     event.preventDefault();
+    
+    let accountNo = sessionStorage.getItem("accountNo");
+
     let searchDate= $("#searchInput").val();
     let dates=searchDate.split("-");
     let datePath="?year="+dates[0]+"month="+dates[1]+"day="+dates[2];
-    //have to add the get acc number from session code
-    $.get("http://localhost:8080/EBanking/transaction/"+"1234567"+"/" +datePath)
-    .done(displaySearch)
-    .fail(errorFunction)
-    .always(function(){
-        console.log("So, this happened.");
-        console.log(dates[0]);
-        console.log(dates[1]);
-        console.log(dates[2]);
-    });
 
+    $.get(apiUrl + "transaction/"+accountNo)
+    .done(displaySearch)
+    .fail(function(){
+        console.log("error in get search")
+        })
+    .always(function(){
+        console.log("search is finished.");
+
+    });
 }
-function displaySearch(data){
-    let transactionList="<tr>";
-for(let temp of data){
-   let date=+temp.date.year+"-"+temp.date.month+"-"+temp.date.day;
-   
-transactionList+="<td>" + temp.transactionId+ "</td>" + "<td>" + date + "</td>"+ "<td>" + temp.transactionAmount+ "</td>"+  "</tr>";
-}
-$("#tranasactionBody").html(transactionList);
-}
+
 function errorFunction(){
-console.log("hi")
+console.log("error in get account balance")
 }
-function displayBalance(data){
+
+function displayBalance(res){
     
-// console.log(JSON.stringify(myJson));
-let balance=data.toString();
-$("#balance-ammount").html(balance);
+    let balance=res.data.balance.toString();
+    $("#balance-ammount").html(balance);
 }

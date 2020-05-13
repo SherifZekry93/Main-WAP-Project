@@ -13,8 +13,10 @@ $(document).ready(function(){
 });
 function redirect(res){
     if(res == true){
-        alert("you have logout successfully!")
+        sessionStorage.clear();
+        
         window.location = "index.html";
+        alert("you have logout successfully!")
     }
     else{
         alert("something wrong please try again!")

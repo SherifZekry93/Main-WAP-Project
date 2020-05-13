@@ -2,9 +2,10 @@
 <html lang="en">
 
 <head>
+    <title>SOA - Home</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>SOA - Home</title>
+   
     <meta content="" name="descriptison">
     <meta content="" name="keywords">
 
@@ -24,10 +25,31 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-    <script src="fragmnent/header.txt"></script>
+
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
+    <header id='header' class='fixed-top'>
+        <div class='container d-flex'>
+          <div class='logo mr-auto'>
+            <h1 class='text-light'><a href='userHome.html'><span>SOA</span>Bank</a></h1>
+          </div>
+          <nav class='nav-menu d-none d-lg-block'>
+            <ul>
+              <li><a href='userHome.html'>Home</a></li>
+              
+              <li class='drop-down'><a style='cursor:pointer;'>Operations</a>
+                <ul>
+                  <li><a href='/balance.html'>Check Balance</a></li>
+                  <li><a href='/transactions.html'>Transactions</a></li>
+                </ul>
+              </li>
+              <li><a href='contact.html'>Contact Us</a></li>
+              <li id='logout'><a href='./index.html'>Logout</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
     <main id="main">
         <!-- ======= Pay Section ======= -->
 
